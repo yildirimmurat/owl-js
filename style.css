@@ -1,0 +1,41 @@
+/* .owl-carousel {
+    margin: 2rem 0;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
+.owl-carousel.owl-loaded {
+    display: block;
+}
+
+.owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.owl-stage {
+    transform: translate3d(-1568px, 0px)
+} */
+
+.item {
+    height: 33vw;
+    background: #4DC7A0;
+    padding: 1rem;
+}
+
+img {
+    height:100%;
+    width: auto !important;
+    position: relative;
+}
+
+h1 {
+    position: absolute;
+    bottom: 1rem;
+    opacity: 0;
+    color: #ffffff;
+}
+

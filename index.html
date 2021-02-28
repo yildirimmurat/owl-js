@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>owl js</title>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="owl-carousel owl-theme">
+        <div class="item"><img class="owl-lazy" data-src="images/patrizia_1.jpg"><h1>1</h1></div>
+        <div class="item"><img class="owl-lazy" data-src="images/patrizia_2.jpg"><h1>2</h1></div>
+        <div class="item"><img class="owl-lazy" data-src="images/patrizia_3.jpg"><h1>3</h1></div>
+        <div class="item"><img class="owl-lazy" data-src="images/patrizia_4.jpg"><h1>4</h1></div>
+        <div class="item"><img class="owl-lazy" data-src="images/patrizia_5.jpg"><h1>5</h1></div>
+        <div class="item"><img class="owl-lazy" data-src="images/patrizia_6.jpg"><h1>6</h1></div>
+        <div class="item"><img class="owl-lazy" data-src="images/patrizia_7.jpg"><h1>7</h1></div>
+        <!-- <img class="owl-lazy" data-src="https://placehold.it/350x450&text=1" data-src-retina="https://placehold.it/350x250&text=1-retina" alt=""> -->
+    </div>
+
+    <button id="prevButton">prev</button>
+    <button id="nextButton">next</button>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var owl = $('.owl-carousel');
+            // var firstItem = $(owl).find('.item').first()
+            // console.log(firstItem)
+            // $(firstItem).find('h1').css('opacity', '1')
+            owl.owlCarousel({
+                loop:true,
+                margin:10,
+                nav:true,
+                items: 1,
+                center: true,
+                autoWidth: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                lazyLoad: true
+            })
+            // Go to the next item
+
+            owl.on('initialize.owl.carousel', function() {
+                console.log('initialized')
+            })
+
+            owl.on("changed.owl.carousel", function(){
+                // selecting the current active item
+                console.log('changed')
+                $(owl).find('.center').not('.cloned').find('h1').css('opacity', '1')
+                // var item = event.item.index-2;
+                // // first removing animation for all captions
+                // $('h1, p').removeClass('fadeInUp');
+                // $('a').removeClass('zoomIn');
+                // $('.owl-item').not('.cloned').eq(item).find('h1, p').addClass(' fadeInUp');
+                // $('.owl-item').not('.cloned').eq(item).find('a').addClass(' zoomIn');
+
+
+                })
+
+            owl.on('translate.owl.carousel', function(event) {
+                console.log('translate begins...')
+                var item = event.target
+                var centerItem = $(item).find('.center')
+                $(centerItem).find('h1').css('opacity', '0')
+                console.log(centerItem)
+            })
+            owl.on('translated.owl.carousel', function(event) {
+                console.log('translate has completed')
+                var item = event.target
+                var centerItem = $(item).find('.center')
+                $(centerItem).find('h1').css('opacity', '1')
+            })
+        });
+    </script>
+</body>
+</html>
